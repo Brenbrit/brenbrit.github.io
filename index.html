@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PGP Words</title>
+
+        <link rel="stylesheet" href="./CSS/home-page.css" />
+    </head>
+    <body>
+        <div id="header">
+            <h1>PGP Words Translator</h1->
+        </div>
+
+        <div id="page-body">
+            <div id="input-container">
+                <div id="manual-input">
+                    <div id="input-container">
+                        <h2>Words -> File</h2>
+                        <p>
+                            Type your words into the below box, then press DOWNLOAD to
+                            download the resulting file.
+                        </p>
+                        <textarea
+                            id="inputArea"
+                            class="general-text-box"
+                            placeholder="Type some PGP words here..."
+                        ></textarea>
+                        
+                    </div>
+                </div>
+                <div id="file-upload-section">
+                    <h2>File -> Words</h2>
+                    <div>
+                        <input type="file" id="fileUpload" value="Upload" />                        
+                    </div>
+                </div>
+            </div>
+            <div id="result-container">
+                <p>Result:</p>
+                <div id="results-text-box">placeholder-text</div>
+
+                <div results-saving-options-container>
+                    <button id="copy-button">Copy</button>
+                <button type="button" onclick="downloadClicked()">
+                    DOWNLOAD
+                </button>
+                </div>
+            </div>
+        </div>
+        <!-- Keep this at the end! -->
+        <script src="backend.js" type="text/javascript"></script>
+    </body>
+</html>

@@ -1,0 +1,89 @@
+html {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+}
+
+.general-text-box {
+    /* Box Model */
+    padding: 10px;
+
+    /* Styling */
+    background-color: rgb(0, 0, 0, 0);
+    border-radius: 2px;
+    border-color: black;
+    border-width: 2px;
+}
+
+.general-text-box:focus {
+    /* Styling */
+    border-color: rgb(178, 76, 181);
+    /* outline none removes the default blue highlighting showing the focused item on the page */
+    outline: none;
+}
+
+.general-button {
+    /* Box Model */
+    border-radius: 3px;
+
+    /* Positioning */
+
+    /* Styling */
+    border: none;
+    background-color: rgb(215, 215, 215);
+}
+
+#page-body {
+    /* Box Model */
+    display: flex;
+    flex-direction: row;
+    padding: 1%;
+
+    /* Box Model */
+    height: 100vh;
+
+    /* Styling */
+    background-color: rgb(225, 225, 225);
+}
+
+#header {
+    /* Box Model */
+    display: flex;
+    position: relative;
+    padding-left: 15px;
+
+    /* Positioning */
+    z-index: 1000;
+
+    /* Styling */
+    color: rgb(155, 166, 255);
+    border-bottom: 2px solid black;
+    background-color: rgb(36, 36, 36);
+    box-shadow: 2px 5px 5px gray;
+}
+
+#header h1 {
+}
+
+#input-container {
+    flex: 1;
+}
+
+#result-container {
+    flex: 1;
+}
+
+#results-text-box {
+    /* Box Model */
+    height: 50%;
+    padding: 2%;
+
+    /* Styling */
+    border: 2px solid black;
+}
