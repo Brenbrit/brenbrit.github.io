@@ -21,32 +21,30 @@
                         </p>
                         <textarea
                             id="inputArea"
+                            class="general-text-box"
                             placeholder="Type some PGP words here..."
                         ></textarea>
-                        <button type="button" onclick="downloadClicked()">
-                            DOWNLOAD
-                        </button>
+                        
                     </div>
                 </div>
                 <div id="file-upload-section">
                     <h2>File -> Words</h2>
                     <div>
-                        <input type="file" id="fileUpload" value="Upload" />
-                        <br />
-                        <textarea
-                            id="outputArea"
-                            placeholder="Uploaded PGP words will be listed here."
-                            readonly
-                        ></textarea>
+                        <input type="file" id="fileUpload" value="Upload" />                        
                     </div>
                 </div>
             </div>
             <div id="result-container">
                 <p>Result:</p>
                 <div id="results-text-box">placeholder-text</div>
+
+                <div results-saving-options-container>
+                    <button id="copy-button">Copy</button>
+                <button type="button" onclick="downloadClicked()">
+                    DOWNLOAD
+                </button>
+                </div>
             </div>
-            
-            <br /><br />
         </div>
         <!-- Keep this at the end! -->
         <script src="backend.js" type="text/javascript"></script>
