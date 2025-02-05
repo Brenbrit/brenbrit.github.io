@@ -48,3 +48,7 @@ body {
 #result-container {
     flex: 1;
 }
+
+#results-text-box {
+    border: 2px solid black;
+}
