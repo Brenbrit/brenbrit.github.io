@@ -12,15 +12,21 @@ for (let i = 0; i < 256; i++) {
     wordMap.set(evenWords[i], [i, false]);
 }
 
-// Called when a user clicks Download.
-// Reads the words in id inputArea and downloads the resulting file.
-function downloadClicked() {
+// Gets the typed bytes, or sets the status and returns null.
+function getTypedBytes() {
     setResult("Parsing words...");
-    const words = document.getElementById("inputArea").value.split(' ');
+
+    const words = document.getElementById("inputArea").value.split(/\s+/);
+
+    console.log(words);
 
     const result = new Uint8Array(words.length);
 
     for (let i = 0; i < words.length; i++) {
+        if (words[i] === "") {
+            continue;
+        }
+
         if (wordMap.has(words[i])) {
             let byte, odd;
             [byte, odd] = wordMap.get(words[i]);
@@ -54,12 +60,45 @@ function downloadClicked() {
                 + " (\""
                 + words[i]
                 + "\") not found in word list.");
-            return;
+            return null;
         }
     }
 
-    downloadBlob(result, "pgpWords.bin");
-    setResult("File is downloading now.")
+    return result;
+}
+
+// Called when the user types a letter.
+// Updates the output section to show the typed bytes.
+function inputAreaChanged() {
+    const result = getTypedBytes();
+
+    if (result) {
+        var resultString = "";
+
+        for (var i = 0; i < result.length; i++) {
+            resultString += result[i].toString(16).padStart(2, '0').toUpperCase();
+
+            if (i % 16 === 0 && i !== 0) {
+                resultString += "<br />";
+            } else {
+                resultString += " ";
+            }
+        }
+
+    }
+
+    setResult(resultString)
+}
+
+// Called when a user clicks Download.
+// Reads the words in id inputArea and downloads the resulting file.
+function downloadClicked() {
+    const result = getTypedBytes();
+
+    if (result) {
+        downloadBlob(result, "pgpWords.bin");
+        setResult("File is downloading now.")
+    }
 }
 
 // Given a Uint8Array, show the resulting words.
@@ -138,5 +177,9 @@ const downloadBlob = (data, fileName) => {
   setTimeout(() => window.URL.revokeObjectURL(url), 3000)
 }
 
-// Add listener
+// Add listeners
 document.getElementById("fileUpload").addEventListener('change', uploadClicked, false)
+document.getElementById("inputArea").addEventListener('keydown', inputAreaChanged, false)
+
+// Set default status
+setResult("Ready to translate.")
